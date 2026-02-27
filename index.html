@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #111;
+            color: white;
+        }
+        .slide {
+            display: none;
+            padding: 50px;
+        }
+        .active {
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
 
+<h1>My Projects</h1>
+
+<div class="slide active">
+    <h2>Project 1</h2>
+    <p>Description of your project</p>
+    <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a>
+</div>
+
+<div class="slide">
+    <h2>Project 2</h2>
+    <p>Description of your second project</p>
+    <a href="https://github.com/yourusername/project2" target="_blank">View on GitHub</a>
+</div>
+
+<button onclick="prevSlide()">Previous</button>
+<button onclick="nextSlide()">Next</button>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+}
+
+function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}
+
+function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+}
+</script>
+
+</body>
+</html>
